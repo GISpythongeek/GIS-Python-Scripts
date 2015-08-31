@@ -1,4 +1,20 @@
-Script Name: shps_to_gdb.py
+# Script Name: shps_to_gdb.py
+# Created By: Melanie
+# Date Created: 31 Aug 2015
+# Version: 1.0
+
+"""
+Description: This simple python script for ArcGIS converts a folder full
+of shapefiles into feature class files in a desired geodatabase, keeping
+the filename intact minus the '.shp' extension.
+
+I created this script because I often have numerous shapefiles that need to be
+converted into feature class files and organized into a geodatabase. (Plus,
+this is my first crack at automating my workflow using a python script, so
+even though it's super simple, I'm still very proud of it!)
+
+I run this with PythonWin.
+"""
 
 ##### --- Converts Multiple Shapefiles (.shp) to FCs in a Geodatabase (.gdb) --- #####
 
@@ -7,9 +23,9 @@ import arcpy
 from arcpy import env
 
 # set current workspace and environment,
-	# where '...XXX/XXX...' represents the desired directory path
+	# where '...XXX/XXX...' represents the specific desired directory path
 env.workspace = "c:/XXX/XXX/XXX"
-#-optional--->  env.overwriteOutput = True
+#-optional, depending on the situation --->  env.overwriteOutput = True
 
 # create a variable 'geodatabase' for target geodatabase (.gdb)
 geodatabase = "c:/XXX/XXX/XXX.gdb"
