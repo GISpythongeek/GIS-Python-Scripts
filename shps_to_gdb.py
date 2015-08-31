@@ -15,7 +15,7 @@ converted into feature class files and organized into a geodatabase. (Plus,
 this is my first crack at automating my workflow using a python script, so
 even though it's super simple, I'm still very proud of it!)
 
-I run this with PythonWin.  I also created a Script Tool by re-setting my 
+I run this with my PythonWin.  I also created a Script Tool by re-setting my 
 variables to get them from the Script Tool dialog box using the 'arcpy.
 GetParameterAsTex(x)' function, as follows:
 
