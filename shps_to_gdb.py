@@ -3,6 +3,8 @@
 # Date Created: 31 Aug 2015
 # Version: 1.0
 
+# Modifications: None
+
 """
 Description: This simple python script for ArcGIS converts a folder full
 of shapefiles into feature class files in a desired geodatabase, keeping
@@ -15,8 +17,6 @@ even though it's super simple, I'm still very proud of it!)
 
 I run this with PythonWin.
 """
-
-##### --- Converts Multiple Shapefiles (.shp) to FCs in a Geodatabase (.gdb) --- #####
 
 # grab 'arcpy' library and 'env' class
 import arcpy
@@ -41,5 +41,3 @@ for shp_file in shapefiles:
 
 # print a notice of when the script has finished running
 print "*** --- Script Complete --- ***"
-
-##### --- end script --- #####
