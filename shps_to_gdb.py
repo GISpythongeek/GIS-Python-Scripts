@@ -15,7 +15,17 @@ converted into feature class files and organized into a geodatabase. (Plus,
 this is my first crack at automating my workflow using a python script, so
 even though it's super simple, I'm still very proud of it!)
 
-I run this with PythonWin.
+I run this with PythonWin.  I also created a Script Tool by re-setting my 
+variables to get them from the Script Tool dialog box using the 'arcpy.
+GetParameterAsTex(x)' function, as follows:
+
+	shp_folder = arcpy.GetParameterAsText(0)
+	geodatabase = arcpy.GetParameterAsText(1)
+	env.workspace = shp_folder
+
+I then of course had to cut the code where I originally set the env.workspace
+and where I set the geodatabase. This Script Tool makes running this script
+in ArcGIS super convenient and easy.
 """
 
 # grab 'arcpy' library and 'env' class
