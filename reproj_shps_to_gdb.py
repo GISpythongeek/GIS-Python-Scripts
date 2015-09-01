@@ -21,9 +21,10 @@ from arcpy import env
 
 # create function 'shpTOgdb' to convert shapefiles to feature class
 	# files in a geodatabase
+	# where '...XXX/XXX...' represents the specific desired directory path
 def shpTOgdb():
-    env.workspace = "c:/Users/Melanie/Desktop/python/shps1"
-    geodatabase = "c:/Users/Melanie/Desktop/python/gdb1.gdb"
+    env.workspace = "c:/XXX/XXX/XXX"
+    geodatabase = "c:/XXX/XXX/XXX.gdb"
     shapefiles = arcpy.ListFeatureClasses()
 
     for shp_file in shapefiles:
@@ -34,13 +35,13 @@ def shpTOgdb():
 # create function 'projectUTM' to re-project to new coordinate system,
 	# in this case UTM Zone 10N
 def projectUTM():
-    env.workspace = "c:/Users/Melanie/Desktop/python/gdb1.gdb"
+    env.workspace = "c:/XXX/XXX/XXX.gdb"
     fc_list = arcpy.ListFeatureClasses()
 
     for file in fc_list:
-        newCoord = arcpy.SpatialReference('NAD 1983 UTM Zone 10N')
-        arcpy.Project_management(file, file+"_UTM", newCoord)
-        print "* - Feature Class %s reprojected to UTM10N - *" % file
+        newCoord = arcpy.SpatialReference('NAD 1983 UTM Zone 10N') # <-- ADD desired coord system
+        arcpy.Project_management(file, file+"_UTM", newCoord) # <-- ADD desired filename ID
+        print "* - Feature Class %s reprojected to UTM10N - *" % file # <-- ADD desired message
 
 # run functions
 shpTOgdb()
