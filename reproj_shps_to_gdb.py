@@ -1,5 +1,5 @@
 # Script Name: reproj_shps_to_gdb.py
-# Created By: Melanie
+# Author: Melanie
 
 """
 Description: This relatively simple python script for ArcGIS converts a folder full
