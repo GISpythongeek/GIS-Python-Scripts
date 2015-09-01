@@ -6,7 +6,7 @@ Description: This relatively simple python script for ArcGIS converts a folder f
 of shapefiles into feature class files in a desired geodatabase, keeping
 the filename intact minus the '.shp' extension. Then it re-projects these
 feature classes into the desired new coordinate system (new files will be created
-with a new filename that identifies the new coordinate system.
+with a new filename that identifies the new coordinate system).
 
 I created this script because I often have numerous shapefiles that need to be
 converted into feature class files, organized into a geodatabase, and then
