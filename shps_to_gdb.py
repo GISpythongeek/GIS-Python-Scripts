@@ -1,9 +1,5 @@
 # Script Name: shps_to_gdb.py
 # Created By: Melanie
-# Date Created: 31 Aug 2015
-# Version: 1.0
-
-# Modifications: None
 
 """
 Description: This simple python script for ArcGIS converts a folder full
