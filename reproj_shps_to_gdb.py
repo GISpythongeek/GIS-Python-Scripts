@@ -62,9 +62,9 @@ def deleteProjFiles():
     
 
 # run functions
-shpTOgdb() # <-- tested and works!
-projectUTM() # <-- tested and works!
-deleteProjFiles() # <-- tested and works!
+shpTOgdb()
+projectUTM()
+deleteProjFiles()
 
 # print a notice of when the script has finished running
 print "*** --- Script Complete --- ***"
