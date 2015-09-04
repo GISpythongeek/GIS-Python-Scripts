@@ -137,10 +137,9 @@ def dissolve():
 
 # create function 'to_excel' to export sites impacted table to Excel file
 def to_excel():
-    excel_folder = "c:/Users/Melanie/Desktop/python/excels/"  # <-- MODIFY as needed
+    excel_folder = "c:/XXX/XXX/XXX/"  # <-- MODIFY as needed
 
     master_list = arcpy.ListFeatureClasses()
-    
     list1 = []
     
     for name in master_list:
