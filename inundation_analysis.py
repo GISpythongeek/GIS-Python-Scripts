@@ -37,10 +37,10 @@ def shpTOgdb():
 def projectUTM():
     fc_list = arcpy.ListFeatureClasses()
 
-    for file in fc_list:
+    for fc_file in fc_list:
         newCoord = arcpy.SpatialReference('NAD 1983 (PA11) UTM Zone 5N') # <-- ADD desired coord system
-        arcpy.Project_management(file, file+"_UTM", newCoord) # <-- ADD desired filename ID
-        print "* - Feature Class %s reprojected to UTM5N - *" % file # <-- ADD desired message  # <-- MODIFY as needed (change to different coordinate system)
+        arcpy.Project_management(fc_file, fc_file+"_UTM", newCoord) # <-- ADD desired filename ID
+        print "* - Feature Class %s reprojected to UTM5N - *" % fc_file # <-- ADD desired message  # <-- MODIFY as needed (change to different coordinate system)
 
 
 # create function 'deleteProjFiles' to delete unwanted files
