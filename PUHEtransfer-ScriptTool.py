@@ -1,13 +1,15 @@
 # PUHEtransfer-ScriptTool.py
 
 '''
-This ScriptTool is to be used to ensure compliance with the NPS Cultural Resources
+This ScriptTool is to be used to ensure compliance with the NPS Cultural resources
 GIS transfer standard when transfering cultural resources GIS data to any
 place outside the specific park unit in which it originated. It creates a new 
-transfer project geodatabase, copies the relevant data files (FCs and Tables) 
-from the park's Master CR GIS to the new transfer project geodatabase, and creates 
-the necessary and compliant feature class files (and deletes any unnecessary tables).
-The new transfer project geodatabase is then ready for transfer.
+transfer project folder, a new transfer project geodatabase, copies the relevant 
+data files (FCs and Tables) from the park's Master CR GIS to the new transfer
+project folder, and creates the necessary and compliant feature class files (and 
+deletes any unnecessary ones no longer needed). Finally, it re-projects the feature
+class files into NAD83 Geographic Coordinate System (required by the NPS CR GIS
+transfer standard). The new transfer project geodatabase is then ready for transfer.
 
 This script was written to aid a National Park Service project I'm currently
 working on (from 21 Sept 2015 to present).
@@ -18,7 +20,7 @@ import arcpy
 from arcpy import env
 
 
-#-# PARAMETER GLOBAL VARIABLES (set parameter acquisition for ScriptTool)
+#-# PARAMETER GLOBAL VARIABLES (set parameter acquisition for Script Tool)
 master_gdb = arcpy.GetParameterAsText(0) # <-- ScriptTool "Select Master Geodatabase"
 gdb_location = arcpy.GetParameterAsText(1) # <-- ScriptTool "Select Location for Transfer Geodatabase"
 gdb_name = arcpy.GetParameterAsText(2) # <-- ScriptTool "Name for Transfer Geodatabase"
@@ -26,6 +28,7 @@ which_FCs = arcpy.GetParameterAsText(3) # <-- ScriptTool "Which Feature Class(es
 
 
 #-# GLOBAL VARIABLES
+# create variable for path to new transfer gdb
 trans_gdb = gdb_location + "/" + gdb_name + ".gdb"
 germane_FCs = []
 germane_tables = []
@@ -121,7 +124,7 @@ def gather_allTAB(): # <-- Done (works 16oct2015 1200noon)
         germane_tables.append(HD)
         germane_tables.append(CRO)
         germane_tables.append(SV)
-
+   
 ### Done (works 16oct2015 1145am)
 # create controler functions
 def gather_all(): # <-- Done (works 16oct2015 1145am)
@@ -217,23 +220,72 @@ def join():
         
 
 
-################################--delete--###############################################
+################################--delete tables--#########################################
 
 ### Done (works - 16oct2015 310pm)
 # create function that deletes redundant tables
-def delete():
+def delete1():
     env.workspace = trans_gdb
 
-    for tablename in germane_tables:
+    tab_list = arcpy.ListTables()
+
+    for tablename in tab_list:
         arcpy.Delete_management(tablename)
 
 
 
-################################----------################################################
+################################--re-project FCs--###############################################
+
+### Done (works - 16oct2015 545pm)
+# create function that re-projects the FCs to GCS NAD83
+def reproject():
+    env.workspace = trans_gdb
+
+    fc_list = arcpy.ListFeatureClasses()
+
+    for filename in fc_list:
+        newCoord = arcpy.SpatialReference('NAD 1983')
+        arcpy.Project_management(filename, filename+"_NAD83", newCoord)
+
+
+
+###########################--delete PA11 projected FCs--###################################
+
+### Done (works - 16oct2015 615pm)
+# create function that deletes PA11 projected FCs
+def delete2():
+    env.workspace = trans_gdb
+
+    fc_list = arcpy.ListFeatureClasses()
+
+    for filename in fc_list:
+        if "NAD83" not in filename:
+            arcpy.Delete_management(filename)
+
+
+
+###########################--rename NAD83 FCs--###################################
+
+### Done (works - 16oct2015 615pm)
+# create function that deletes redundant tables
+def rename():
+    env.workspace = trans_gdb
+
+    fc_list = arcpy.ListFeatureClasses()
+
+    for filename in fc_list:
+        arcpy.Rename_management(filename, filename[:-6])
+
+
+
+##############################---------------#####################################
 
 # -- run functions -- #
 create_gdb()
 controler()
 copy()
 join()
-delete()
+delete1()
+reproject()
+delete2()
+rename()
