@@ -6,7 +6,7 @@ GIS transfer standard when transfering cultural resources GIS data to any
 place outside the specific park unit in which it originated. It creates a new 
 transfer project geodatabase, copies the relevant data files (FCs and Tables) 
 from the park's Master CR GIS to the new transfer project geodatabase, and creates 
-the necessary and compliant feature class files (and deletes any unnecessary tables.
+the necessary and compliant feature class files (and deletes any unnecessary tables).
 The new transfer project geodatabase is then ready for transfer.
 
 This script was written to aid a National Park Service project I'm currently
