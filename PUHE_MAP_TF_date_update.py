@@ -74,15 +74,10 @@ def filename_update():
 		if ".mxd" in filename and "MAP_TF_as of" in filename:
 			TF_map = filename
 
-	file1 = TF_map[:-12]  # stores all the characters in the filename that
-		# come before the date as variable 'file1'
-	file3 = TF_map[-4:]  # stores all the characters in the filename that
-		# come after the date as variable 'file3'
-	new_name = file1 + today + file3  # stores our new, updated filename by
-		# concatenating our 'file1' variable with our 'new_date' variable with our
-		# 'file3' variable
-	os.rename(os.path.join(folder,TF_map),os.path.join(folder,new_name))  # takes
-		# our old filename and replaces it with the new filename
+	file1 = TF_map[:-12]
+	file3 = TF_map[-4:]
+	new_name = file1 + today + file3
+	os.rename(os.path.join(folder,TF_map),os.path.join(folder,new_name))
 
 
 
