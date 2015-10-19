@@ -4,10 +4,9 @@
 This ScriptTool is to be used to ensure compliance with the NPS Cultural resources
 GIS transfer standard when transfering cultural resources GIS data to any
 place outside the specific park unit in which it originated. It creates a new 
-transfer project folder, a new transfer project geodatabase, copies the relevant 
-data files (FCs and Tables) from the park's Master CR GIS to the new transfer
-project folder, and creates the necessary and compliant feature class files (and 
-deletes any unnecessary ones no longer needed). Finally, it re-projects the feature
+transfer project geodatabase, copies the relevant data files (FCs and Tables) 
+from the park's Master CR GIS to the new transfer project folder, and creates 
+the necessary and compliant feature class files. Finally, it re-projects the feature
 class files into NAD83 Geographic Coordinate System (required by the NPS CR GIS
 transfer standard). The new transfer project geodatabase is then ready for transfer.
 
